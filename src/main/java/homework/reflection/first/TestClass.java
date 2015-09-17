@@ -15,6 +15,14 @@ public class TestClass {
     private int age;
 
 
-
-
+    private String getMethodFields(String s1,String s2, int n) {
+        String name1;
+        String type1;
+        double price1;
+        Integer hight1;
+        Float length1;
+        int age1;
+        String result = s1 + s2+n;
+        return result;
+    }
 }

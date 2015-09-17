@@ -11,6 +11,7 @@ public class ReflectRunner {
     }
 
     public static void main(String[] args) {
+        TestClass test = new TestClass();
         byte fieldNumber = 6;
         HashMap fields = new HashMap(fieldNumber);
         fields.put("name", "NameOfTestClass000");
@@ -20,5 +21,6 @@ public class ReflectRunner {
         fields.put("length", Float.valueOf(150.0F));
         fields.put("age", Integer.valueOf(10));
         ReflectionClass.getObject("homework.reflection.first.TestClass", fields);
+//        ReflectionClass.getFieldsFromTestMethod("homework.reflection.first.TestClass", fields);
     }
 }
