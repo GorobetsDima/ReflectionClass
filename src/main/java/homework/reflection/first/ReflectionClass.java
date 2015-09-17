@@ -10,7 +10,34 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * @ author
  * Created by Gorobets Dmitriy on 17.09.2015.
+ * <p>
+ * метод "getObject" сетит  private поля класса TestClass
+ * @parame className - имя  любого искомого класса
+ * @parame fields - мапа состоящая из названий полей и значений этих полей
+ * <p>
+ * clazz = обьект типа Class
+ * obj = обьект типа TestClass
+ * e - имя класа TestClass
+ * fildNames -множество ключей из мапы fields
+ * iter - итератор по множеству ключей мапы
+ * keySetName - значение ключа из множества ключей
+ * field - обьект поля полученый из класса TestClass
+ * fieldName- имя поля
+ * mods - число которое соответствует типу модифекатора получаемого из класса TestClass поля
+ * fieldType - тип получаемого поля
+ * @except IllegalAccessException -выбрасывается ,если программа пытается получить доступ к закрытым полям
+ * @except NoSuchFieldException -выбрасывается ,если программа не нашла соответствующего поля в заданном классе
+ * @except ClassNotFoundException -выбрасывается ,если программа не нашла соответствующего класса
+ * @except InstantiationException -выбрасывается ,если программа не не может создать новый экземпляр класса TestClass
+ * <p>
+ * метод "getFieldsFromTestMethod" сетит параметры в  private метод класса TestClass
+ * <p>
+ * returnType - тип возвращаемого значения метода
+ * paramTypes - массив параметров метода
+ * @exept InvocationTargetException - выбрасывается если вызов метода не возможен
+ * все остольное анологично методу "getObject", только заместь полей действия производятся над методами!
  */
 
 public class ReflectionClass {
@@ -50,11 +77,9 @@ public class ReflectionClass {
 
                 }
             }
-        } catch (IllegalAccessException | NoSuchFieldException | ClassNotFoundException var) {
+        } catch (IllegalAccessException | NoSuchFieldException | ClassNotFoundException | InstantiationException var) {
             System.out.println(var.getMessage());
             var.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
         }
 
         return clazz;
@@ -90,7 +115,7 @@ public class ReflectionClass {
                         if (methName.equals(keySetName)) {
                             method.invoke(obj1, methodzz.get(keySetName));
                         }
-                        System.out.println(retTypeName + " " + methName + " " + "(" + Arrays.toString(paramTypes) +" = "+ methodzz.get(keySetName)+ ");");
+                        System.out.println(retTypeName + " " + methName + " " + "(" + Arrays.toString(paramTypes) + " = " + methodzz.get(keySetName) + ");");
 
                     }
                 }
