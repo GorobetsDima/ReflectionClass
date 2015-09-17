@@ -20,7 +20,10 @@ public class ReflectRunner {
         fields.put("hight", Integer.valueOf(100));
         fields.put("length", Float.valueOf(150.0F));
         fields.put("age", Integer.valueOf(10));
-        ReflectionClass.getObject("homework.reflection.first.TestClass", fields);
-//        ReflectionClass.getFieldsFromTestMethod("homework.reflection.first.TestClass", fields);
+        HashMap metodzz = new HashMap(fieldNumber);
+        metodzz.put("getMethodFields", "Awesome");
+
+//        ReflectionClass.getObject("homework.reflection.first.TestClass", fields);
+        ReflectionClass.getFieldsFromTestMethod("homework.reflection.first.TestClass", metodzz);
     }
 }
